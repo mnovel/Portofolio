@@ -1,0 +1,28 @@
+# ============================================================
+# SECURITY.TXT - Muhammad Novel
+# ============================================================
+# To report a security vulnerability, please contact:
+# ============================================================
+
+# ===== PRIMARY CONTACT =====
+Contact: mailto:mnovel78@gmail.com
+Contact: https://wa.me/6282143000116
+Contact: https://t.me/muhnovel
+
+# ===== SOCIAL MEDIA =====
+Contact: https://www.linkedin.com/in/muhammad-novel
+Contact: https://x.com/muhnovel_
+Contact: https://github.com/mnovel
+
+# ===== POLICY =====
+# Policy expiration date
+Expires: 2027-08-31
+
+# Preferred languages for communication
+Preferred-Languages: en, id
+
+# Encryption (Optional - if you have a PGP key)
+# Encryption: https://novelwardah.com/pgp-key.txt
+
+# ===== ACKNOWLEDGMENT =====
+# Thank you for helping to keep cybersecurity safe! 🔒

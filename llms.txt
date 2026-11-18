@@ -1,0 +1,23 @@
+# Muhammad Novel - Penetration Tester & Security Analyst
+
+> Penetration Tester & Security Analyst. Berpengalaman di Cyber Security, Cloud Computing, dan Incident Response. Menggabungkan keahlian Infrastructure & Security.
+
+## Profile & About
+- [About Me](https://novelwardah.com/#about): Educational background and career in cyber security.
+- [Work Experience](https://novelwardah.com/#experience): Career history as Security Engineer, CSIRT, and Head of R&D.
+- [Organization](https://novelwardah.com/#organization): Experience leading Research and Development at LSO Kaliber.
+
+## Skills & Certifications
+- [Skills & Tools](https://novelwardah.com/#skills): List of hard skills, soft skills, infrastructure engineering, security operations, and tools mastered.
+- [Certifications](https://novelwardah.com/#certificates): Interactive gallery of professional certifications and training certificates from EC-Council, Cisco, Oracle, Google, and others.
+
+## Contact
+- [Email](mailto:mnovel78@gmail.com): mnovel78@gmail.com
+- [WhatsApp](https://wa.me/6282143000116): +62 821-4300-0116
+- [LinkedIn](https://www.linkedin.com/in/muhammad-novel): Muhammad Novel
+- [GitHub](https://github.com/mnovel): github.com/mnovel
+- [X (Twitter)](https://x.com/muhnovel_): @muhnovel_
+- [Instagram](https://instagram.com/muhnovel._): @muhnovel._
+
+## Full Content
+- [Full Content](https://novelwardah.com/llms-full.txt): Complete profile information in a single Markdown file.
