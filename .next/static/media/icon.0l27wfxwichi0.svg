@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M50 5 L90 15 L85 50 C80 75 65 90 50 95 C35 90 20 75 15 50 L10 15 Z" fill="#0a0e17" stroke="#00f0ff" stroke-width="6" />
+  <text x="50" y="65" font-family="Arial, sans-serif" font-size="44" font-weight="bold" fill="#00f0ff" text-anchor="middle">
+    N
+  </text>
+</svg>

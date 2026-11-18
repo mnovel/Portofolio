@@ -13,8 +13,10 @@
 # testing
 /coverage
 
-# next.js
-/.next/
+# next.js (abaikan semua isi .next KECUALI hasil build standalone & static)
+/.next/*
+!/.next/standalone/
+!/.next/static/
 /out/
 
 # production
@@ -40,4 +42,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# local backup folder
 /backup

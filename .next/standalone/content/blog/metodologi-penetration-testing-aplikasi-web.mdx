@@ -1,0 +1,49 @@
+---
+title: "Metodologi Penetration Testing Aplikasi Web Modern Berdasarkan OWASP Testing Guide"
+date: "2026-11-08"
+summary: "Tahapan sistematis melakukan Web Application Penetration Testing mulai dari reconnaissance, mapping attack surface, eksploitasi OWASP Top 10, hingga pelaporan remediasi."
+tags: ["PenetrationTesting", "OWASP", "WebSecurity", "AppSec"]
+---
+
+**Penetration Testing** aplikasi web bukan sekadar menjalankan pemindai kerentanan otomatis, melainkan simulasi serangan terkendali untuk menguji ketahanan logika bisnis, mekanisme autentikasi, dan kontrol akses aplikasi.
+
+Mengacu pada **OWASP Web Security Testing Guide (WSTG)**, berikut tahapan sistematis dalam melakukan pengujian penetrasi aplikasi web modern.
+
+## 1. Reconnaissance & Information Gathering
+
+Tahap awal bertujuan mengumpulkan informasi pasif maupun aktif mengenai arsitektur target sebelum menyentuh aplikasi secara langsung:
+
+* Enumerasi subdomain, sertifikat SSL/TLS (*Certificate Transparency logs*), dan aset yang terekspos ke publik.
+* Identifikasi *tech stack* aplikasi (web server, reverse proxy, framework backend, WAF, dan dokumentasi API publik seperti Swagger/OpenAPI).
+
+```bash
+# Contoh enumerasi subdomain pasif dan pengecekan status HTTP
+subfinder -d targetdomain.com -silent | httpx -status-code -title -tech-detect
+```
+
+## 2. Mapping Attack Surface
+
+Setelah lingkup target dipetakan, langkah berikutnya adalah memahami alur kerja aplikasi secara menyeluruh menggunakan *intercepting proxy* seperti **Burp Suite**:
+
+* Menelusuri seluruh fitur aplikasi menggunakan berbagai peran pengguna (*Admin*, *Staff*, *Regular User*, dan *Unauthenticated*).
+* Memetakan seluruh *endpoint* REST API / GraphQL, parameter input (`GET`, `POST`, `JSON`, `Header`), serta mekanisme manajemen sesi (*Cookies* dan *JWT*).
+
+## 3. Pengujian Kerentanan Kritis (OWASP Top 10)
+
+Fokus pengujian diarahkan pada celah yang memiliki dampak bisnis tinggi terhadap kerahasiaan, integritas, dan ketersediaan data:
+
+* **Broken Access Control (IDOR & Privilege Escalation)**: Menguji apakah pengguna dengan hak akses rendah dapat membaca atau memodifikasi data milik pengguna lain dengan memanipulasi ID objek atau *role parameter* pada request API.
+* **Injection (SQLi, Command Injection, SSTI)**: Menguji sanitasi dan validasi input pada kueri database maupun pemrosesan template di sisi server.
+* **Authentication & Session Management**: Menguji kelemahan validasi *JSON Web Token (JWT)* (seperti *algorithm confusion* atau *weak secret*), celah *password reset*, serta ketiadaan *rate limiting* pada endpoint autentikasi.
+* **Server-Side Request Forgery (SSRF)**: Menguji apakah parameter URL atau *webhook* dapat dimanfaatkan untuk mengakses layanan internal atau *cloud metadata endpoint*.
+
+## 4. Eksploitasi Terkendali & Proof of Concept (PoC)
+
+Setiap kerentanan yang ditemukan harus divalidasi secara aman tanpa merusak integritas data produksi (*non-destructive testing*). Dokumentasikan langkah reproduksi (*step-by-step request & response*) secara akurat agar tidak menimbulkan perdebatan *false positive*.
+
+## 5. Penyusunan Laporan & Rekomendasi Remediasi
+
+Laporan *penetration testing* yang berkualitas menjembatani kebutuhan manajemen dan tim pengembang:
+
+* **Executive Summary**: Ringkasan profil risiko keseluruhan, distribusi tingkat keparahan (*Critical, High, Medium, Low* berdasarkan skor **CVSS**), serta dampak bisnis.
+* **Technical Findings**: Detail teknis kerentanan, *Proof of Concept (PoC)*, serta contoh perbaikan kode (*secure coding remediation*) yang spesifik sesuai bahasa pemrograman aplikasi.

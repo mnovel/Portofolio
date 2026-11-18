@@ -1,0 +1,17 @@
+User-Agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /temp/
+
+User-Agent: Amazonbot
+User-Agent: Applebot-Extended
+User-Agent: Bytespider
+User-Agent: CCBot
+User-Agent: ClaudeBot
+User-Agent: Google-Extended
+User-Agent: GPTBot
+User-Agent: meta-externalagent
+Disallow: /
+
+Sitemap: https://novelwardah.com/sitemap.xml

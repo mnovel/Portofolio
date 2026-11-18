@@ -1,0 +1,35 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/certifications/layout,_N_T_/certifications/page,_N_T_/certifications"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/_index",
+    "/certifications/__PAGE__"
+  ],
+  "prefetchHints": {
+    "hints": 0,
+    "slots": {
+      "children": {
+        "hints": 64,
+        "slots": {
+          "children": {
+            "hints": 160,
+            "slots": null
+          }
+        }
+      }
+    }
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/6521d41ca053cd5ed961c2fd6dbffdffcdfbfcf9b66d7b54080a328dbfa8b70f/$/certifications",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/certifications/page"
+    },
+    "isFallback": false
+  }
+}

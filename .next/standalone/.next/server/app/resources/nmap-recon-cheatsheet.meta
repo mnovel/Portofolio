@@ -1,0 +1,40 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/resources/layout,_N_T_/resources/[slug]/layout,_N_T_/resources/[slug]/page,_N_T_/resources/nmap-recon-cheatsheet"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/_index",
+    "/resources/$d$slug/__PAGE__"
+  ],
+  "prefetchHints": {
+    "hints": 0,
+    "slots": {
+      "children": {
+        "hints": 64,
+        "slots": {
+          "children": {
+            "hints": 96,
+            "slots": {
+              "children": {
+                "hints": 160,
+                "slots": null
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/77127e8ae4f6b555e9bcb8f563a7f60ccc34ec2fa0ebead809ddb99941b837ec/$/resources/nmap-recon-cheatsheet",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/resources/[slug]/page"
+    },
+    "isFallback": false
+  }
+}

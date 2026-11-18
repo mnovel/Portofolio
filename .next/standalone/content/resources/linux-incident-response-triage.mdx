@@ -1,0 +1,57 @@
+---
+title: "Linux Live Incident Response & Forensic Triage Cheat Sheet"
+date: "2026-11-18"
+category: "Blue Team & IR"
+summary: "Kumpulan perintah investigasi cepat (live triage) pada server Linux saat terjadi dugaan intrusi untuk mengidentifikasi proses berbahaya, koneksi jaringan, persistence, dan anomali autentikasi."
+tags: ["IncidentResponse", "BlueTeam", "LinuxForensics", "ECIH"]
+---
+
+Gunakan perintah di bawah ini pada fase **Identification & Containment** sebelum melakukan perubahan sistem atau *reboot* agar bukti volatil tetap terjaga.
+
+## 1. Koneksi Jaringan & Socket Aktif
+
+Identifikasi port *listening* dan koneksi keluar (*established*) beserta PID dan biner yang menjalankannya:
+
+```bash
+ss -tulpn
+ss -antp state established
+lsof -i -P -n
+```
+
+## 2. Investigasi Proses & Binary Mencurigakan
+
+Mendeteksi proses dengan penggunaan resource abnormal atau proses yang binernya sudah dihapus dari disk namun masih berjalan di memori (`deleted`):
+
+```bash
+ps auxf --sort=-%cpu | head -n 25
+ls -la /proc/*/exe 2>/dev/null | grep deleted
+```
+
+## 3. Audit Persistence Mechanism (Cron, Systemd, SSH Keys)
+
+Memeriksa jadwal eksekusi otomatis dan kunci akses yang mungkin disisipkan penyerang:
+
+```bash
+crontab -l
+ls -la /etc/cron* /var/spool/cron/crontabs/
+systemctl list-units --type=service --state=running
+find /home /root -name "authorized_keys" -exec ls -la {} \;
+```
+
+## 4. Analisis Log Autentikasi & Riwayat Login
+
+Melacak login berhasil maupun gagal, eskalasi `sudo`, serta perubahan akun pengguna:
+
+```bash
+last -aiF | head -n 20
+grep -E "Accepted|Failed|sudo" /var/log/auth.log | tail -n 50
+awk -F: '$3 == 0 {print $1}' /etc/passwd
+```
+
+## 5. Pencarian File yang Baru Dimodifikasi (24 Jam Terakhir)
+
+Menemukan *web shell* atau *dropper* yang baru ditulis ke direktori web maupun `/tmp`:
+
+```bash
+find /var/www /tmp /dev/shm -type f -mtime -1 -ls 2>/dev/null
+```

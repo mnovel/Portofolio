@@ -1,0 +1,54 @@
+---
+title: "Linux Privilege Escalation Enumeration & Hardening Audit Cheat Sheet"
+date: "2026-11-17"
+category: "Pentest & Recon"
+summary: "Referensi perintah enumerasi post-exploitation dan audit keamanan lokal Linux untuk mendeteksi misconfigured sudo, binary SUID/SGID, capabilities, dan cronjob rentan."
+tags: ["LinuxPrivEsc", "Pentest", "PostExploitation", "SystemAudit"]
+---
+
+Referensi cepat untuk memverifikasi potensi jalur eskalasi hak akses (*privilege escalation*) saat melakukan *penetration testing* maupun audit internal server Linux.
+
+## 1. Informasi Sistem, Kernel & Lingkungan
+
+Memeriksa versi kernel, distribusi OS, dan variabel *environment* yang berpotensi menyimpan kredensial:
+
+```bash
+uname -a && cat /etc/os-release
+id && groups
+env
+```
+
+## 2. Audit Hak Akses Sudo & Password Storage
+
+Memeriksa perintah apa saja yang dapat dijalankan pengguna saat ini dengan hak `root` tanpa atau dengan password:
+
+```bash
+sudo -l
+ls -la /etc/passwd /etc/shadow
+```
+
+## 3. Pencarian Binary SUID & SGID
+
+Menemukan file eksekusi yang berjalan dengan hak akses pemilik file (`root`):
+
+```bash
+find / -perm -4000 -type f 2>/dev/null
+find / -perm -2000 -type f 2>/dev/null
+```
+
+## 4. Audit Linux File Capabilities
+
+Memeriksa biner yang memiliki kapabilitas khusus kernel (seperti `cap_setuid`, `cap_net_raw`, atau `cap_dac_read_search`):
+
+```bash
+getcap -r / 2>/dev/null
+```
+
+## 5. Audit Writable Directories & Scheduled Tasks
+
+Mendeteksi file skrip yang dijalankan oleh `root` secara berkala namun memiliki izin tulis (*world-writable*) bagi pengguna biasa:
+
+```bash
+cat /etc/crontab
+find / -writable -type d 2>/dev/null | grep -vE "^(/proc|/sys|/dev)"
+```

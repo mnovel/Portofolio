@@ -1,0 +1,55 @@
+---
+title: "Panduan Incident Response: 6 Tahapan Penanganan Insiden Siber Berdasarkan Standar NIST & ECIH"
+date: "2026-11-12"
+summary: "Pelajari metodologi terstruktur penanganan insiden keamanan siber mulai dari Preparation, Containment, Eradication, hingga Recovery sesuai kerangka NIST dan EC-Council ECIH."
+tags: ["IncidentResponse", "ECIH", "CyberSecurity", "DigitalForensics"]
+---
+
+Ketika serangan *ransomware* atau kebocoran data terjadi, kepanikan dan tindakan reaktif tanpa prosedur dapat merusak barang bukti digital serta memperluas dampak serangan ke seluruh jaringan. Kerangka kerja **Incident Handling & Response (IH&R)** memastikan tim keamanan bertindak cepat, terukur, dan *forensic-ready*.
+
+## 1. Preparation (Persiapan)
+
+Tahap paling menentukan sebelum insiden terjadi. Fokus utama pada fase ini adalah membangun kesiapan infrastruktur dan tim:
+
+* Menyusun *Incident Response Plan (IRP)* beserta matriks eskalasi kontak darurat.
+* Mengaktifkan *centralized logging* (SIEM) dengan sinkronisasi waktu NTP yang akurat di seluruh server.
+* Menyiapkan *Jump Bag* forensik (perangkat lunak akuisisi memori, *live response scripts*, dan media penyimpanan steril).
+
+## 2. Identification (Identifikasi & Triase)
+
+Membedakan antara anomali operasional biasa (*false positive*) dan insiden keamanan nyata (*true positive*) melalui analisis peringatan SIEM, IDS/IPS, maupun laporan pengguna.
+
+Pada tahap ini, **Incident Handler** mendokumentasikan waktu deteksi awal (*Time to Detect*), menentukan ruang lingkup sistem terdampak, dan mengklasifikasikan tingkat keparahan insiden.
+
+## 3. Containment (Isolasi Ancaman)
+
+Menghentikan penyebaran serangan (*lateral movement*) ke segmen jaringan lain tanpa langsung mematikan daya server (*hard shutdown*) yang dapat menghapus artefak penting di memori RAM:
+
+* **Short-term Containment**: Memutus koneksi jaringan pada host terinfeksi (isolasi VLAN atau mencabut kabel jaringan) sambil membiarkan sistem tetap menyala.
+* **Forensic Acquisition**: Mengambil *volatile memory dump* (RAM), daftar proses aktif, koneksi jaringan, serta *disk image* sebelum melakukan perubahan apa pun pada sistem.
+
+```bash
+# Contoh pengumpulan informasi volatil awal pada Linux sebelum isolasi penuh
+ss -tulpn > /mnt/forensic_usb/network_connections.txt
+ps auxf > /mnt/forensic_usb/running_processes.txt
+last -aiF > /mnt/forensic_usb/login_history.txt
+```
+
+## 4. Eradication (Pemberantasan)
+
+Menghapus akar penyebab insiden secara menyeluruh dari lingkungan sistem:
+
+* Menghapus *malware*, *web shell*, *scheduled tasks* (cronjob) berbahaya, dan akun *backdoor* yang dibuat penyerang.
+* Menambal celah kerentanan aplikasi atau sistem operasi yang menjadi titik masuk awal (*initial access vector*).
+
+## 5. Recovery (Pemulihan Layanan)
+
+Mengembalikan sistem ke lingkungan produksi secara bertahap dan terverifikasi:
+
+* Melakukan pemulihan data dari *clean backup* yang telah dipastikan bebas dari *malware*.
+* Mereset seluruh kredensial, token API, dan kunci SSH yang berpotensi terkompromi.
+* Melakukan pemantauan ketat (*enhanced monitoring*) pada log SIEM selama 24–72 jam pasca-pemulihan untuk memastikan tidak ada aktivitas lanjutan.
+
+## 6. Lessons Learned (Evaluasi Pasca-Insiden)
+
+Menyelenggarakan pertemuan evaluasi (*post-mortem*) dan menyusun laporan kronologi lengkap (*Root Cause Analysis*) dalam 1–2 minggu setelah insiden selesai. Hasil temuan digunakan untuk memperbarui *rules* deteksi SIEM/IDS serta memperketat kebijakan keamanan organisasi.

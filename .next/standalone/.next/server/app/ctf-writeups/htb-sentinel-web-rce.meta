@@ -1,0 +1,40 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/ctf-writeups/layout,_N_T_/ctf-writeups/[slug]/layout,_N_T_/ctf-writeups/[slug]/page,_N_T_/ctf-writeups/htb-sentinel-web-rce"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/_index",
+    "/ctf-writeups/$d$slug/__PAGE__"
+  ],
+  "prefetchHints": {
+    "hints": 0,
+    "slots": {
+      "children": {
+        "hints": 64,
+        "slots": {
+          "children": {
+            "hints": 96,
+            "slots": {
+              "children": {
+                "hints": 160,
+                "slots": null
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/4f74c668ef4c1167dcc7960b18a6f2211c82d585ce977cce593b922a4c8c5e3f/$/ctf-writeups/htb-sentinel-web-rce",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/ctf-writeups/[slug]/page"
+    },
+    "isFallback": false
+  }
+}
