@@ -46,6 +46,15 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/cdn-cgi/l/email-protection',
+        destination: '/contact',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

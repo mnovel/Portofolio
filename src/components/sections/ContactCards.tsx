@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Mail } from "lucide-react";
 import { PROFILE } from "@/data/portfolio";
 
@@ -107,18 +110,36 @@ const CONTACT_STYLES: Record<
 };
 
 export default function ContactCards({ limit }: { limit?: number }) {
+  const [hydratedEmail, setHydratedEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    setHydratedEmail(`${"mnovel78"}@${"gmail.com"}`);
+  }, []);
+
   const items = limit ? PROFILE.socials.slice(0, limit) : PROFILE.socials;
 
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((soc) => {
         const style = CONTACT_STYLES[soc.key] || CONTACT_STYLES.email;
+        const isEmail = soc.key === "email";
+
+        const href = isEmail
+          ? hydratedEmail
+            ? `mailto:${hydratedEmail}`
+            : "#contact"
+          : soc.href;
+
+        const label = isEmail
+          ? (hydratedEmail ?? "mnovel78 [at] gmail.com")
+          : soc.label;
+
         return (
           <a
             key={soc.key}
-            href={soc.href}
-            target="_blank"
-            rel="noreferrer"
+            href={href}
+            target={isEmail ? undefined : "_blank"}
+            rel={isEmail ? undefined : "noreferrer"}
             className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-7 text-center backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:bg-cyber-cyan/5 hover:shadow-[0_15px_30px_rgba(0,0,0,0.4)] ${style.hoverBorder}`}
           >
             <div
@@ -130,7 +151,7 @@ export default function ContactCards({ limit }: { limit?: number }) {
               {soc.name}
             </h3>
             <p className="break-all text-xs font-medium text-cyber-muted transition group-hover:text-cyber-text sm:text-sm">
-              {soc.label}
+              {label}
             </p>
             <span className="mt-3 block text-[11px] text-[#495670]">
               {soc.hint}

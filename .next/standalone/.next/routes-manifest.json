@@ -12,6 +12,12 @@
       "priority": true,
       "statusCode": 308,
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    },
+    {
+      "source": "/cdn-cgi/l/email-protection",
+      "destination": "/contact",
+      "statusCode": 307,
+      "regex": "^(?!/_next)/cdn-cgi/l/email-protection(?:/)?$"
     }
   ],
   "headers": [

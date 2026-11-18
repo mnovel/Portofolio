@@ -21,7 +21,7 @@
       "js"
     ],
     "instrumentationClientInject": [],
-    "poweredByHeader": true,
+    "poweredByHeader": false,
     "compress": true,
     "images": {
       "deviceSizes": [
@@ -344,7 +344,14 @@
     "turbopack": {
       "root": "D:\\IT\\Source Code\\Portofolio"
     },
-    "distDirRoot": ".next"
+    "distDirRoot": ".next",
+    "_originalRedirects": [
+      {
+        "source": "/cdn-cgi/l/email-protection",
+        "destination": "/contact",
+        "permanent": false
+      }
+    ]
   },
   "appDir": "D:\\IT\\Source Code\\Portofolio",
   "relativeAppDir": "",
