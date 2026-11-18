@@ -1,0 +1,69 @@
+---
+title: "Silent Exfiltration — Analisis Paket PCAP & Rekonstruksi Payload DNS Tunneling"
+date: "2026-11-16"
+summary: "Writeup investigasi forensik jaringan menggunakan Wireshark dan Tshark untuk mendeteksi anomali trafik DNS tunneling, mengekstrak subdomain terenkode Base64, dan memulihkan file yang dicuri."
+tags: ["DigitalForensics", "NetworkForensics", "Wireshark", "DNSTunneling"]
+difficulty: "Easy"
+platform: "TryHackMe"
+---
+
+**Silent Exfiltration** adalah tantangan forensik jaringan (*Network Forensics*) yang menyajikan rekaman tangkapan paket (`capture.pcapng`) dari sebuah server internal yang dicurigai mengalami kebocoran data (*data exfiltration*) tanpa memicu peringatan firewall perimeter.
+
+## 1. Triase Awal & Statistik Protokol
+
+Langkah pertama dalam analisis forensik paket adalah memetakan distribusi protokol dan percakapan antar-host menggunakan **Wireshark** (`Statistics -> Protocol Hierarchy`) atau **Tshark** melalui terminal:
+
+```bash
+tshark -r capture.pcapng -q -z io,phs
+```
+
+Hasil statistik menunjukkan bahwa lebih dari **82% total paket** didominasi oleh protokol **DNS (UDP Port 53)** menuju satu *resolver* eksternal (`198.51.100.77`), sementara trafik HTTP/HTTPS sangat minim.
+
+## 2. Identifikasi Anomali DNS Query
+
+Pemeriksaan kueri DNS mengungkap ratusan permintaan `TXT` dan `A` record dengan panjang subdomain yang tidak wajar mengarah ke domain `sync-update.badactor.net`:
+
+```bash
+tshark -r capture.pcapng -Y "dns.flags.response == 0" -T fields -e frame.number -e dns.qry.name | head -n 15
+```
+
+Output terminal menampilkan pola subdomain berurutan dengan karakter acak (*high entropy*):
+
+```text
+142   001-UEsDBBQAAAAI.sync-update.badactor.net
+145   002-A6B29C11AA00.sync-update.badactor.net
+149   003-c2VjcmV0X2RhdGE.sync-update.badactor.net
+...
+```
+
+Pola nomor urut (`001-`, `002-`, `003-`) yang diikuti string **Base64** (diawali `UEsDBBQ`, yang merupakan *magic bytes* header arsip **ZIP** `PK\x03\x04`) mengonfirmasi terjadinya **DNS Tunneling Data Exfiltration**.
+
+## 3. Ekstraksi & Rekonstruksi Data dari PCAP
+
+Untuk menyusun kembali potongan data dari seluruh paket kueri DNS secara akurat tanpa duplikasi paket *retransmission*, digunakan kombinasi `tshark`, `sort`, dan `base64` di Linux:
+
+```bash
+tshark -r capture.pcapng -Y "dns.flags.response == 0 && dns.qry.name contains sync-update.badactor.net" \
+  -T fields -e dns.qry.name \
+  | sed 's/.sync-update.badactor.net//g' \
+  | sort -u \
+  | cut -d'-' -f2 \
+  | tr -d '\n' \
+  | base64 -d > recovered_archive.zip
+```
+
+### Verifikasi Integritas File Hasil Rekonstruksi
+
+Pemeriksaan tipe file dan isi arsip menggunakan utilitas `file` dan `unzip`:
+
+```bash
+file recovered_archive.zip
+unzip -l recovered_archive.zip
+```
+
+Output mengonfirmasi file hasil ekstraksi adalah arsip ZIP valid berisi dokumen `confidential_keys.txt`. Setelah diekstrak, flag ditemukan di dalam dokumen tersebut.
+
+## Mitigasi & Deteksi SOC
+
+1. **DNS Monitoring & Entropy Analysis**: Konfigurasikan aturan deteksi pada **Suricata IDS** atau **Wazuh SIEM** untuk memicu peringatan ketika panjang nama kueri DNS melebihi 50 karakter atau memiliki entropi Shannon yang tinggi.
+2. **Enforce Internal DNS Resolver**: Blokir seluruh trafik keluar UDP/TCP Port 53 langsung ke internet pada firewall perimeter, dan wajibkan seluruh host hanya menggunakan server DNS internal yang diawasi.

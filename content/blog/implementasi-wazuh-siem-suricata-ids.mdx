@@ -1,0 +1,81 @@
+---
+title: "Arsitektur Blue Team: Integrasi Wazuh SIEM dan Suricata IDS untuk Deteksi Ancaman Real-Time"
+date: "2026-11-15"
+summary: "Panduan membangun Security Operations Center (SOC) open-source dengan mengintegrasikan Wazuh SIEM dan Suricata IDS/IPS untuk mendeteksi intrusi jaringan secara real-time."
+tags: ["Wazuh", "Suricata", "SIEM", "BlueTeam", "SOC"]
+---
+
+Dalam operasional **Security Operations Center (SOC)** modern, visibilitas di level *host* saja tidak cukup. Menggabungkan **Wazuh** sebagai *Host-based Intrusion Detection System (HIDS) / SIEM* dengan **Suricata** sebagai *Network IDS/IPS* memberikan korelasi telemetri jaringan dan sistem secara menyeluruh.
+
+## Mengapa Menggabungkan Wazuh dan Suricata?
+
+* **Suricata** menganalisis paket jaringan melalui *Deep Packet Inspection (DPI)* untuk mendeteksi eksploitasi protokol, *port scanning*, dan komunikasi *Command and Control (C2)*.
+* **Wazuh** mengumpulkan log sistem, memantau integritas file (*File Integrity Monitoring*), dan menjalankan *Active Response* untuk memblokir IP penyerang secara otomatis.
+
+## Langkah 1: Konfigurasi Output EVE JSON pada Suricata
+
+Pastikan Suricata mencatat seluruh peringatan (*alerts*) dalam format terstruktur `eve.json` di `/etc/suricata/suricata.yaml`:
+
+```yaml
+outputs:
+  - eve-log:
+      enabled: yes
+      filetype: regular
+      filename: eve.json
+      types:
+        - alert:
+            tagged-packets: yes
+        - dns:
+            query: yes
+            answer: yes
+        - http:
+            extended: yes
+```
+
+Perbarui *ruleset* Emerging Threats, uji validitas konfigurasi, lalu jalankan ulang layanan Suricata:
+
+```bash
+sudo suricata-update
+sudo suricata -T -c /etc/suricata/suricata.yaml -v
+sudo systemctl restart suricata
+```
+
+## Langkah 2: Membaca Log Suricata dari Wazuh Agent
+
+Tambahkan blok `localfile` pada konfigurasi Wazuh Agent (`/var/ossec/etc/ossec.conf`) pada server yang dipantau agar log `eve.json` diteruskan ke Wazuh Manager:
+
+```xml
+<localfile>
+  <log_format>json</log_format>
+  <location>/var/log/suricata/eve.json</location>
+</localfile>
+```
+
+Restart layanan agen agar aturan baru berjalan:
+
+```bash
+sudo systemctl restart wazuh-agent
+```
+
+## Langkah 3: Mengaktifkan Active Response untuk Blokir Otomatis
+
+Pada **Wazuh Manager** (`/var/ossec/etc/ossec.conf`), Anda dapat mengonfigurasi *Active Response* untuk memblokir alamat IP sumber serangan secara otomatis ketika Suricata memicu *alert* dengan tingkat keparahan tinggi (Rule ID `86601`):
+
+```xml
+<active-response>
+  <command>firewall-drop</command>
+  <location>local</location>
+  <rules_id>86601</rules_id>
+  <timeout>1800</timeout>
+</active-response>
+```
+
+Restart Wazuh Manager untuk menerapkan kebijakan respons otomatis:
+
+```bash
+sudo systemctl restart wazuh-manager
+```
+
+## Kesimpulan
+
+Dengan integrasi **Wazuh + Suricata**, tim *Blue Team* memperoleh deteksi berlapis dari level paket jaringan hingga perubahan sistem file, lengkap dengan mitigasi otomatis dalam hitungan detik.

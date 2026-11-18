@@ -1,0 +1,17 @@
+import { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      { userAgent: '*', allow: '/', disallow: ['/admin/', '/includes/', '/temp/'] },
+      {
+        userAgent: [
+          'Amazonbot', 'Applebot-Extended', 'Bytespider', 'CCBot',
+          'ClaudeBot', 'Google-Extended', 'GPTBot', 'meta-externalagent',
+        ],
+        disallow: '/',
+      },
+    ],
+    sitemap: 'https://novelwardah.com/sitemap.xml',
+  };
+}

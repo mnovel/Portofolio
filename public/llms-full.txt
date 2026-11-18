@@ -1,0 +1,175 @@
+# Muhammad Novel - Penetration Tester & Security Analyst
+
+> Official portfolio, technical knowledge base, security blog, CTF writeups, and cheat sheets of Muhammad Novel — Security Engineer, Penetration Tester, and Infrastructure Engineer.
+
+**Location:** Malang / Pasuruan, East Java, Indonesia  
+**Status:** Available for Collaboration & Professional Discussions  
+**Website:** https://novelwardah.com/  
+**Sitemap:** https://novelwardah.com/sitemap.xml  
+**Full Context:** https://novelwardah.com/llms-full.txt  
+
+---
+
+## SITE ARCHITECTURE & NAVIGATION
+
+- **Home (`/`):** Executive summary, core security & infrastructure domains, featured projects, and quick contact channels.
+- **About Me (`/about`):** Detailed professional dossier, core competency pillars, work history, academic background, and leadership roles.
+- **Projects & Case Studies (`/projects`):** Real-world implementations in hospital IT infrastructure (SIMRS), SIEM/IDS deployment, and web security.
+- **Certifications (`/certifications`):** Verified credentials across EC-Council, Cisco, Oracle Academy, Google Cloud, and Dicoding.
+- **Security Blog (`/blog`):** Technical articles on Linux hardening, Wazuh SIEM + Suricata IDS architecture, NIST/ECIH incident response, OWASP penetration testing, and healthcare cybersecurity.
+- **CTF Writeups (`/ctf-writeups`):** Step-by-step walkthroughs covering Web Exploitation, SQL Injection, Linux Privilege Escalation, and PCAP Digital Forensics.
+- **Cheat Sheets & Resources (`/resources`):** Filterable CLI references and playbooks for Nmap reconnaissance, Linux live incident response triage, privilege escalation audits, and Docker hardening.
+- **Contact (`/contact`):** Direct communication channels and collaboration availability.
+
+---
+
+## ABOUT ME
+
+I am an **Informatics Engineering** graduate from **Universitas Muhammadiyah Malang** with a deep interest in **Cyber Security**, **Cloud Computing**, and **Infrastructure Engineering**. I have hands-on experience across offensive and defensive cybersecurity operations and hold industry certifications including **CND** and **ECIH** from EC-Council, as well as **CCNA CyberOps** and **CCNAv7** from Cisco.
+
+I currently serve as a **Security Engineer** at **RSUD dr. R. Soedarsono Kota Pasuruan**, where I bridge 24/7 hospital infrastructure reliability (SIMRS, physical/virtual servers, databases, network segmentation) with proactive cyber defense (penetration testing, SIEM/IDS/IPS monitoring, and incident response).
+
+Previously, I served as **Head of Research and Development** at **LSO Kaliber** (2021–2024), developing internal web platforms, designing cybersecurity curricula, and mentoring members. I also worked for over two years as a **Penetration Tester** and **Security Analyst** at **CSIRT UMM**, focusing on web application security testing, network intrusion detection, honeypot deployment, and digital forensics.
+
+---
+
+## WORK EXPERIENCE
+
+### Security Engineer (Infrastructure & Security)
+**RSUD dr. R. Soedarsono Kota Pasuruan** · Feb 2025 - Present
+
+- Managing and maintaining hospital information system (SIMRS) security, physical & virtual servers, databases, and networks to ensure 24/7 healthcare service availability.
+- Implementing virtualization (VMware) and containerization (Docker) for resource optimization and high availability, alongside Grafana observability.
+- Conducting penetration testing, vulnerability assessments, and real-time threat monitoring via SIEM/IDS/IPS (Wazuh, Snort, Suricata).
+- Enforcing cybersecurity policies, backup/recovery strategies, and rapid incident response to safeguard electronic medical records from internal and external threats.
+
+### Computer Security Incident Response Team - Internship
+**CSIRT UMM** · Nov 2021 - Jan 2024
+
+- Conducted comprehensive penetration testing to identify and remediate vulnerabilities in web applications, server configurations, and development frameworks.
+- Implemented and maintained network security monitoring using IDS/IPS (Snort, Suricata) for proactive threat detection and mitigation.
+- Designed and deployed honeypots to capture, observe, and analyze malicious attacker behavior.
+- Executed digital forensic investigations on compromised systems, preserving and analyzing volatile and disk artifacts.
+- Authored structured technical security advisories and remediation reports.
+
+### Head of Research and Development
+**LSO Kaliber** · 2021 - 2024
+
+- Architected and developed the Kaliber web application as an internal organizational management platform.
+- Created structured cybersecurity and software engineering educational modules for members.
+- Mentored student members in penetration testing, networking, and full-stack web development.
+
+---
+
+## EDUCATION
+
+### Bachelor of Informatics Engineering (S1 Teknik Informatika)
+**Universitas Muhammadiyah Malang** · 2021 - 2026
+- Specialization: Cyber Security & Cloud Computing
+- Core Coursework: Computer Networking, Network & Information Security, Cloud Computing, Operating Systems, and Software Engineering.
+
+### Senior High School (SMA IPA)
+**SMA Negeri 1 Pasuruan** · 2018 - 2021
+
+---
+
+## NONFORMAL EDUCATION & BOOTCAMPS
+
+### Cyber Blue Team (Network Security Operation Center)
+**Metrodata Academy** · Feb - Jun 2024
+- Certified Network Defender (CND) - EC-Council
+- EC-Council Certified Incident Handler (ECIH)
+- Certified Secure Computer User (CSCU)
+- Ethical Hacking Essentials (EHE)
+- Network Defense Essentials (NDE)
+
+### Cloud Computing Cohort
+**Bangkit Academy (Google, GoTo, Traveloka)** · Aug - Dec 2023
+- Google IT Support & System Administration
+- Cloud Computing Foundation & Cloud Engineering Learning Path
+- Web Basic & Back-End Application Development with Google Cloud Run
+- Applied Machine Learning for Cloud Engineer
+
+### Cyber Security Operation
+**Digital Talent Scholarship (Kominfo)** · Jul - Aug 2022
+- CCNA CyberOps Specialist — Security Concepts, Security Monitoring, Host-Based Analysis, Network Intrusion Analysis, and Security Policies & Procedures.
+
+---
+
+## CERTIFICATIONS
+
+### Industry & Professional Certifications
+| Certification | Issuer | Credential ID / Year |
+| :--- | :--- | :--- |
+| Certified Network Defender (CND) | EC-Council | ECC3154906782 |
+| EC-Council Certified Incident Handler (ECIH) | EC-Council | ECC6802147935 |
+| CCNAv7: Switching, Routing, and Wireless Essentials | Cisco | 2023 |
+| CyberOps Associate | Cisco | 2022 |
+| Database Foundations | Oracle Academy | 2023 |
+| Java Foundations | Oracle Academy | 2023 |
+
+### Training & Technical Course Completions
+| Certification | Issuer | Year |
+| :--- | :--- | :--- |
+| Cyber Blue Team (SOC) | Metrodata Academy | 2024 |
+| Cloud Computing Cohort | Bangkit Academy | 2023 |
+| Cyber Security Operation | Digital Talent Scholarship | 2022 |
+| Cybersecurity Essentials | Cisco Networking Academy | 2022 |
+| Cybersecurity Fundamentals | IBM SkillsBuild | 2023 |
+| Basic Digital Forensic | WIMI-SEC | 2022 |
+| Ethical Hacking for Beginners | SkillUp by Simplilearn | 2022 |
+| System Administration and IT Infrastructure | Coursera (Google) | 2023 |
+| The Bits and Bytes of Computer Networking | Coursera (Google) | 2023 |
+| Belajar Dasar Pemrograman Web | Dicoding Indonesia | 2023 |
+| Belajar Dasar Git dengan GitHub | Dicoding Indonesia | 2023 |
+| Logika Pemrograman (Programming Logic 101) | Dicoding Indonesia | 2023 |
+| Memulai Dasar Pemrograman | Dicoding Indonesia | 2023 |
+| Aplikasi Back-End Google Cloud | Dicoding Indonesia | 2023 |
+
+---
+
+## TECHNICAL SKILLS & TOOLING
+
+### Infrastructure & Cloud Engineering
+- Linux Server Administration & Hardening (Ubuntu, Debian, RHEL)
+- Server Virtualization (VMware) & Containerization (Docker)
+- Database Administration & Backup/Recovery
+- Enterprise Network Configuration, VLAN Segmentation & Firewalling
+- Infrastructure Observability (Grafana) & Google Cloud Platform (GCP)
+
+### Offensive & Defensive Security Operations
+- Web Application Penetration Testing (OWASP Top 10) & Vulnerability Assessment
+- Incident Handling & Response (NIST / ECIH Framework) & Digital Forensics
+- SIEM, IDS/IPS & Honeypot Management (Wazuh, Snort, Suricata)
+
+### Security & Operations Stack
+- **Security Testing:** Burp Suite, Nmap, SQLMap, Gobuster, FFUF
+- **Monitoring & Forensics:** Wireshark, Tshark, Wazuh, Snort, Suricata, Grafana
+- **Infrastructure & Cloud:** Docker, VMware, Google Cloud Platform, Cloudflare Tunnel, Next.js
+
+### Programming & Scripting Languages
+- Python, Bash, SQL, TypeScript / JavaScript, PHP
+
+---
+
+## CONTACT & PROFILES
+
+| Platform | Detail |
+| :--- | :--- |
+| **Email** | mnovel78@gmail.com |
+| **WhatsApp** | +62 821-4300-0116 (`https://wa.me/6282143000116`) |
+| **LinkedIn** | https://www.linkedin.com/in/muhammad-novel |
+| **GitHub** | https://github.com/mnovel |
+| **Website** | https://novelwardah.com/ |
+| **X (Twitter)** | https://x.com/muhnovel_ |
+| **Instagram** | https://instagram.com/muhnovel._ |
+
+---
+
+## TAGS & KEYWORDS
+
+`#CyberSecurity` `#PenetrationTester` `#SecurityAnalyst` `#IncidentHandler` `#CND` `#ECIH` `#SecurityEngineer` `#InfrastructureEngineer` `#CloudComputing` `#NetworkSecurity` `#LinuxAdmin` `#BlueTeam` `#SOC` `#HospitalIT` `#RSUD` `#UMM`
+
+---
+
+*Last Updated: 2026-11-18*

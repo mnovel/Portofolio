@@ -1,0 +1,53 @@
+---
+title: "Docker Security Hardening & Infrastructure Operations Cheat Sheet"
+date: "2026-11-16"
+category: "Docker & Cloud"
+summary: "Kumpulan perintah operasional dan keamanan Docker untuk menjalankan container terisolasi (non-root, read-only, cap-drop), audit jaringan, dan pemantauan resource produksi."
+tags: ["Docker", "ContainerSecurity", "DevSecOps", "Infrastructure"]
+---
+
+Kumpulan perintah harian untuk mengelola, mengaudit, dan memperkeras konfigurasi keamanan container **Docker** di server produksi.
+
+## 1. Menjalankan Container dengan Prinsip Least Privilege
+
+Menjalankan container dalam mode *read-only*, mencabut seluruh *Linux capabilities*, dan mencegah proses di dalam container mendapatkan hak istimewa baru:
+
+```bash
+docker run -d \
+  --name secure-service \
+  --read-only \
+  --tmpfs /tmp:rw,noexec,nosuid \
+  --cap-drop=ALL \
+  --security-opt=no-new-privileges:true \
+  --memory="512m" \
+  --cpus="1.0" \
+  my-app:latest
+```
+
+## 2. Monitoring & Audit Container Aktif
+
+Menampilkan ringkasan status, eksposur port, dan konsumsi resource container secara real-time:
+
+```bash
+docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
+docker stats --no-stream
+```
+
+## 3. Inspeksi Jaringan, Volume & Konfigurasi Keamanan
+
+Memeriksa apakah container berjalan sebagai `root` atau memiliki *mount* sensitif dari mesin *host*:
+
+```bash
+docker inspect --format '{{.Name}} -> User: {{.Config.User}} | Privileged: {{.HostConfig.Privileged}}' $(docker ps -q)
+docker network ls
+```
+
+## 4. Pembersihan Artefak & Image Tidak Terpakai
+
+Menjaga kapasitas disk server tetap optimal dengan menghapus *dangling images* dan *build cache* lama secara aman:
+
+```bash
+docker system df
+docker image prune -f
+docker builder prune --filter "until=168h" -f
+```

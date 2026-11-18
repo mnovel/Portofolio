@@ -1,0 +1,39 @@
+---
+title: "Strategi Keamanan Siber Infrastruktur Rumah Sakit: Melindungi SIMRS dan Data Rekam Medis"
+date: "2026-11-04"
+summary: "Tantangan dan arsitektur pertahanan siber pada sektor kesehatan untuk menjaga ketersediaan layanan rumah sakit 24/7 serta kerahasiaan data rekam medis elektronik."
+tags: ["HealthcareSecurity", "SIMRS", "InfrastructureSecurity", "NetworkSegmentation"]
+---
+
+Sektor layanan kesehatan memiliki karakteristik operasional yang sangat krusial: sistem informasi harus beroperasi **24/7 tanpa downtime** untuk menunjang pelayanan medis darurat, sekaligus menyimpan data sensitif pasien (*Electronic Medical Records*) yang menjadi target utama kelompok *ransomware*.
+
+Menerapkan keamanan pada **Sistem Informasi Manajemen Rumah Sakit (SIMRS)** membutuhkan keseimbangan antara proteksi ketat dan kelancaran alur kerja tenaga medis.
+
+## 1. Segmentasi Jaringan Kritis (Micro-Segmentation)
+
+Jaringan datar (*flat network*) merupakan risiko terbesar di lingkungan rumah sakit. Pisahkan infrastruktur jaringan ke dalam zona VLAN terisolasi menggunakan aturan *Access Control List (ACL)* pada firewall dan *core switch*:
+
+* **Zona Server Inti (Core Data Center)**: Menampung server aplikasi SIMRS, database rekam medis, server PACS/DICOM radiologi, serta *Active Directory / Identity Provider*. Hanya port aplikasi spesifik dari *reverse proxy* atau *application tier* yang diizinkan masuk.
+* **Zona Perangkat Medis (IoMT)**: Alat diagnostik laboratorium dan radiologi sering kali berjalan di atas sistem operasi *legacy* yang tidak dapat sembarangan di-patch. Isolasi perangkat ini dalam VLAN khusus dengan pembatasan akses keluar (*egress filtering*).
+* **Zona Workstation Staf & Publik**: Komputer poliklinik, administrasi, dan jaringan Wi-Fi pengunjung wajib dipisahkan total sehingga kompromi pada satu PC staf tidak merambat ke server database utama.
+
+## 2. Strategi Backup 3-2-1-1-0 Anti-Ransomware
+
+Ketika serangan *ransomware* menargetkan enkripsi sistem penyimpanan utama, *backup* menjadi lini pertahanan terakhir untuk menjaga kontinuitas pelayanan rumah sakit:
+
+* **3** salinan data (1 data produksi + 2 salinan cadangan).
+* **2** media penyimpanan yang berbeda.
+* **1** salinan disimpan di lokasi terpisah (*off-site*).
+* **1** salinan bersifat **Immutable** (*Write-Once-Read-Many*) atau *air-gapped* sehingga tidak dapat dihapus maupun dienkripsi bahkan oleh akun administrator yang terkompromi.
+* **0** error pada hasil verifikasi pemulihan (*automated restore drill*) berkala.
+
+## 3. High Availability & Observability Real-Time
+
+Ketersediaan (*Availability*) dalam segitiga **CIA Triad** berdampak langsung pada keselamatan pasien:
+
+* **Virtualisasi & Klasterisasi**: Manfaatkan klaster virtualisasi (**VMware**) dan kontainerisasi (**Docker**) untuk meminimalkan *Single Point of Failure (SPOF)* pada layanan kritis seperti pendaftaran IGD dan farmasi.
+* **Observability Server & Database**: Pantau metrik utilisasi CPU, memori, latensi kueri database, dan kapasitas penyimpanan secara real-time menggunakan **Grafana** agar potensi gangguan terdeteksi sebelum memengaruhi operasional pelayanan.
+
+## 4. Kontrol Akses Berbasis Peran (RBAC) & Audit Trail
+
+Terapkan prinsip *Role-Based Access Control (RBAC)* yang ketat di dalam aplikasi SIMRS maupun akses infrastruktur server. Pastikan setiap aktivitas pembacaan, perubahan, dan penghapusan data rekam medis tercatat dalam *audit log* yang dikirim ke server **SIEM** terpusat untuk memenuhi standar kepatuhan perlindungan data pribadi.

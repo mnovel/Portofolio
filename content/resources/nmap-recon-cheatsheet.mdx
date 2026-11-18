@@ -1,0 +1,46 @@
+---
+title: "Nmap Network Reconnaissance & NSE Vulnerability Scanning Cheat Sheet"
+date: "2026-11-18"
+category: "Pentest & Recon"
+summary: "Referensi perintah Nmap lengkap mulai dari host discovery, SYN stealth scan, enumerasi versi layanan, hingga pemindaian kerentanan menggunakan NSE scripts."
+tags: ["Nmap", "Reconnaissance", "Pentest", "NetworkSecurity"]
+---
+
+Kumpulan perintah **Nmap** untuk pemetaan jaringan dan enumerasi layanan secara cepat maupun mendalam.
+
+## 1. Host Discovery & Fast Port Scan
+
+Menemukan host aktif dalam satu subnet tanpa melakukan *port scan* penuh:
+
+```bash
+nmap -sn 192.168.1.0/24
+```
+
+Memindai seluruh 65.535 port TCP dengan kecepatan tinggi dan menyimpan hasil ke semua format output (`scan_full.nmap`, `.gnmap`, `.xml`):
+
+```bash
+nmap -sS -p- --min-rate=1500 -oA scan_full <target_ip>
+```
+
+## 2. Service Version & OS Fingerprinting
+
+Melakukan enumerasi banner layanan dan sistem operasi pada port spesifik yang ditemukan:
+
+```bash
+nmap -sC -sV -O -p 22,80,443,3306,8080 <target_ip>
+```
+
+## 3. Nmap Scripting Engine (NSE) untuk Audit Keamanan
+
+Memeriksa kerentanan umum (*CVE checks*) dan konfigurasi SSL/TLS:
+
+```bash
+nmap --script vuln -p 80,443 <target_ip>
+nmap --script ssl-enum-ciphers -p 443 <target_ip>
+```
+
+Enumerasi share SMB dan kerentanan EternalBlue (`MS17-010`):
+
+```bash
+nmap --script smb-enum-shares,smb-vuln-ms17-010 -p 445 <target_ip>
+```

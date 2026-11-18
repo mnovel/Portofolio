@@ -1,0 +1,157 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://novelwardah.com/#person",
+  "name": "Muhammad Novel",
+  "jobTitle": "Security Engineer, Penetration Tester & Security Analyst",
+  "description": "Security Engineer, Penetration Tester & Security Analyst (CND, ECIH). Berpengalaman di Cyber Security, Cloud Computing, Incident Response, dan Infrastructure Engineering.",
+  "url": "https://novelwardah.com/",
+  "image": "https://novelwardah.com/icon.svg",
+  "email": "mailto:mnovel78@gmail.com",
+  "telephone": "+6282143000116",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Malang / Pasuruan",
+    "addressRegion": "East Java",
+    "addressCountry": "ID"
+  },
+  "worksFor": {
+    "@type": "OrganizationRole",
+    "roleName": "Security Engineer (Infrastructure & Security)",
+    "startDate": "2025-02",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "RSUD dr. R. Soedarsono Kota Pasuruan"
+    }
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Universitas Muhammadiyah Malang",
+    "sameAs": "https://www.umm.ac.id/"
+  },
+  "hasOccupation": [
+    {
+      "@type": "Occupation",
+      "name": "Security Engineer",
+      "occupationalCategory": "15-1212.00"
+    },
+    {
+      "@type": "Occupation",
+      "name": "Penetration Tester"
+    },
+    {
+      "@type": "Occupation",
+      "name": "Incident Handler"
+    }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/muhammad-novel",
+    "https://github.com/mnovel",
+    "https://x.com/muhnovel_",
+    "https://instagram.com/muhnovel._",
+    "https://wa.me/6282143000116"
+  ],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Certified Network Defender (CND)",
+      "credentialCategory": "certification",
+      "identifier": "ECC3154906782",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "EC-Council"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "EC-Council Certified Incident Handler (ECIH)",
+      "credentialCategory": "certification",
+      "identifier": "ECC6802147935",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "EC-Council"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "CyberOps Associate",
+      "credentialCategory": "certification",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Cisco"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "CCNAv7: Switching, Routing, and Wireless Essentials",
+      "credentialCategory": "certification",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Cisco"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Database Foundations",
+      "credentialCategory": "certification",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Oracle Academy"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Java Foundations",
+      "credentialCategory": "certification",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Oracle Academy"
+      }
+    }
+  ],
+  "knowsAbout": [
+    "Cyber Security",
+    "Web Application Penetration Testing",
+    "Incident Handling & Response (ECIH)",
+    "Digital Forensics",
+    "Security Operations Center (SOC)",
+    "SIEM, IDS/IPS (Wazuh, Suricata, Snort)",
+    "Cloud Computing (Google Cloud Platform)",
+    "Linux Server Administration & Hardening",
+    "Virtualization & Containerization (VMware, Docker)",
+    "Network Security & Segmentation",
+    "Healthcare IT Infrastructure Security (SIMRS)"
+  ],
+  "subjectOf": [
+    {
+      "@type": "WebPage",
+      "name": "About Muhammad Novel",
+      "url": "https://novelwardah.com/about"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Projects & Case Studies",
+      "url": "https://novelwardah.com/projects"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Certifications Gallery",
+      "url": "https://novelwardah.com/certifications"
+    },
+    {
+      "@type": "Blog",
+      "name": "Security Blog",
+      "url": "https://novelwardah.com/blog"
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "CTF Writeups",
+      "url": "https://novelwardah.com/ctf-writeups"
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "Cheat Sheets & Resources",
+      "url": "https://novelwardah.com/resources"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-dark: #0a0e17;
+  --color-cyber-card: #101624;
+  --color-cyber-cyan: #00f0ff;
+  --color-cyber-green: #00ff99;
+  --color-cyber-text: #ccd6f6;
+  --color-cyber-muted: #8892b0;
+  --color-cyber-amber: #ffb347;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-fira-code), ui-monospace, SFMono-Regular, monospace;
+
+  --animate-spin-slow: spin 25s linear infinite;
+  --animate-spin-reverse: spin 18s linear infinite reverse;
+  --animate-spin-dashed: spin 12s linear infinite;
+  --animate-float: float 4s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cyber-dark);
+    color: var(--color-cyber-text);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0e17;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #00f0ff;
+    border-radius: 10px;
+  }
+}
+
+.bg-cyber-grid {
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.glow-cyan {
+  color: #00f0ff;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.glow-green {
+  color: #00ff99;
+  text-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+}

@@ -1,0 +1,126 @@
+---
+title: "Panduan Lengkap Hardening Server Linux Produksi untuk Keamanan Infrastruktur"
+date: "2026-11-18"
+summary: "Pelajari langkah-langkah hardening server Linux Ubuntu dan Debian produksi mulai dari konfigurasi SSH, firewall UFW, Fail2Ban, hingga audit kernel sysctl."
+tags: ["LinuxHardening", "InfrastructureSecurity", "SysAdmin", "ServerSecurity"]
+---
+
+Mengamankan server Linux sebelum terhubung ke jaringan produksi adalah langkah fundamental dalam **Infrastructure Security**. Konfigurasi bawaan (*default*) sistem operasi umumnya dirancang untuk kemudahan akses dan kompatibilitas, bukan keamanan maksimal.
+
+Artikel ini merangkum standar *hardening* server berbasis Ubuntu/Debian yang dapat langsung diterapkan pada lingkungan produksi.
+
+## 1. Perbarui Sistem dan Aktifkan Security Patch Otomatis
+
+Kerentanan pada paket sistem operasi yang usang merupakan celah paling sering dieksploitasi. Pastikan seluruh paket diperbarui dan aktifkan pembaruan keamanan otomatis:
+
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install unattended-upgrades apt-listchanges -y
+sudo dpkg-reconfigure --priority=low unattended-upgrades
+```
+
+## 2. Amankan Layanan SSH (Secure Shell)
+
+Port 22 merupakan target utama pemindaian otomatis dan serangan *brute-force* di internet. Buat backup konfigurasi awal terlebih dahulu, lalu perketat aturan di `/etc/ssh/sshd_config`:
+
+```bash
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+```
+
+Ubah parameter berikut di dalam `/etc/ssh/sshd_config`:
+
+```text
+PermitRootLogin no
+PasswordAuthentication no
+PubkeyAuthentication yes
+PermitEmptyPasswords no
+MaxAuthTries 3
+ClientAliveInterval 300
+ClientAliveCountMax 2
+AllowUsers admin_deploy
+```
+
+Validasi sintaks konfigurasi sebelum me-restart layanan SSH agar sesi Anda tidak terkunci:
+
+```bash
+sudo sshd -t && sudo systemctl restart ssh
+```
+
+## 3. Terapkan Kebijakan Firewall Default-Deny dengan UFW
+
+Terapkan prinsip *least privilege* pada level jaringan dengan memblokir seluruh koneksi masuk (*incoming*) secara default, dan hanya membuka port layanan yang benar-benar diperlukan:
+
+```bash
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 22/tcp comment 'SSH Access'
+sudo ufw allow 443/tcp comment 'HTTPS Traffic'
+sudo ufw enable
+sudo ufw status verbose
+```
+
+## 4. Proteksi Brute-Force Otomatis dengan Fail2Ban
+
+**Fail2Ban** memantau log autentikasi (`/var/log/auth.log`) secara real-time dan memblokir alamat IP yang melakukan percobaan login gagal berulang kali menggunakan aturan firewall:
+
+```bash
+sudo apt install fail2ban -y
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+```
+
+Aktifkan proteksi `sshd` di `/etc/fail2ban/jail.local`:
+
+```ini
+[sshd]
+enabled = true
+port = ssh
+filter = sshd
+logpath = /var/log/auth.log
+maxretry = 3
+bantime = 3600
+findtime = 600
+```
+
+Jalankan layanan Fail2Ban:
+
+```bash
+sudo systemctl enable --now fail2ban
+sudo fail2ban-client status sshd
+```
+
+## 5. Perkuat Parameter Jaringan Kernel (sysctl)
+
+Tambahkan konfigurasi keamanan kernel di `/etc/sysctl.d/99-security-hardening.conf` untuk memitigasi serangan *IP spoofing*, *ICMP redirect*, dan *SYN flood*:
+
+```ini
+# Proteksi SYN Flood
+net.ipv4.tcp_syncookies = 1
+
+# Cegah IP Spoofing (Reverse Path Filtering)
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.default.rp_filter = 1
+
+# Tolak ICMP Redirects (Mencegah MITM Routing)
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv4.conf.all.send_redirects = 0
+
+# Abaikan Broadcast Ping (Mencegah Smurf Attack)
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+```
+
+Terapkan pengaturan tanpa perlu *reboot* server:
+
+```bash
+sudo sysctl --system
+```
+
+## 6. Nonaktifkan Layanan & Port yang Tidak Digunakan
+
+Periksa seluruh layanan yang sedang mendengarkan koneksi jaringan (*listening ports*) dan matikan daemon yang tidak relevan dengan fungsi server:
+
+```bash
+sudo ss -tulpn
+```
+
+Dengan menerapkan enam lapisan dasar di atas, permukaan serangan (*attack surface*) server Linux produksi Anda akan berkurang secara signifikan sebelum memasuki tahap pemantauan SIEM/IDS.

@@ -1,0 +1,25 @@
+import { MetadataRoute } from 'next';
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: 'Muhammad Novel - Penetration Tester & Security Analyst',
+    short_name: 'Novel Portfolio',
+    description: 'Hybrid Infrastructure & Security Engineer. Certified CND, ECIH, CCNA.',
+    start_url: '/',
+    display: 'standalone',
+    background_color: '#0a0e17',
+    theme_color: '#0a0e17',
+    icons: [
+      {
+        src: 'https://avatars.githubusercontent.com/u/66077593?s=192&v=4',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: 'https://avatars.githubusercontent.com/u/66077593?s=512&v=4',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+    ],
+  };
+}

@@ -1,0 +1,28 @@
+# Muhammad Novel - Penetration Tester & Security Analyst
+
+> Security Engineer, Penetration Tester & Security Analyst. Berpengalaman di Cyber Security, Cloud Computing, dan Incident Response. Menggabungkan keahlian Infrastructure & Security.
+
+## Profile & Background
+- [Home](https://novelwardah.com/): Executive overview, core domains, featured case studies, and quick contact channels.
+- [About Me](https://novelwardah.com/about): Educational background, core competency pillars, work experience (RSUD dr. R. Soedarsono, CSIRT UMM), and organizational leadership (LSO Kaliber).
+- [Projects & Case Studies](https://novelwardah.com/projects): Real-world implementations in healthcare IT infrastructure (SIMRS), SIEM/IDS deployment, and web application security.
+- [Certifications](https://novelwardah.com/certifications): Interactive gallery of professional and training certifications from EC-Council (CND, ECIH), Cisco (CCNA, CyberOps), Oracle Academy, Google Cloud, and Dicoding.
+
+## Knowledge Base & Technical Writing
+- [Security Blog](https://novelwardah.com/blog): Technical guides on Linux hardening, Wazuh SIEM + Suricata IDS architecture, NIST/ECIH incident response, OWASP penetration testing, and healthcare cybersecurity.
+- [CTF Writeups](https://novelwardah.com/ctf-writeups): Walkthroughs covering Web Exploitation, SQL Injection, Linux Privilege Escalation, and PCAP Digital Forensics.
+- [Cheat Sheets & Resources](https://novelwardah.com/resources): Filterable CLI references and playbooks for Nmap reconnaissance, Linux live incident response triage, privilege escalation audits, and Docker hardening.
+
+## Contact
+- [Contact Page](https://novelwardah.com/contact): Direct collaboration channels and availability status.
+- [Email](mailto:mnovel78@gmail.com): mnovel78@gmail.com
+- [WhatsApp](https://wa.me/6282143000116): +62 821-4300-0116
+- [LinkedIn](https://www.linkedin.com/in/muhammad-novel): Muhammad Novel
+- [GitHub](https://github.com/mnovel): github.com/mnovel
+- [X (Twitter)](https://x.com/muhnovel_): @muhnovel_
+- [Instagram](https://instagram.com/muhnovel._): @muhnovel._
+
+## Full Context & Discovery
+- [Full Content](https://novelwardah.com/llms-full.txt): Complete profile, work history, certifications, and technical stack in a single Markdown file.
+- [Profile JSON](https://novelwardah.com/profile.json): Structured machine-readable profile metadata.
+- [Sitemap](https://novelwardah.com/sitemap.xml): XML sitemap covering all static and MDX routes.
