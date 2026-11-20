@@ -8,6 +8,7 @@
   "/contact/page": "app/contact/page.js",
   "/ctf-writeups/[slug]/page": "app/ctf-writeups/[slug]/page.js",
   "/ctf-writeups/page": "app/ctf-writeups/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/icon.svg/route": "app/icon.svg/route.js",
   "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
   "/page": "app/page.js",

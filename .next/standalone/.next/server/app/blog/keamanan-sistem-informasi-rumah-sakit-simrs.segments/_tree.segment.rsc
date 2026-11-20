@@ -4,4 +4,4 @@
 3:[["children",{"s":"__PAGE__","h":160}]]
 2:[["children",{"s":{"n":"slug","t":"d","k":"keamanan-sistem-informasi-rumah-sakit-simrs","s":[]},"h":96,"c":"$Q3"}]]
 1:[["children",{"s":"blog","h":64,"c":"$Q2"}]]
-0:{"b":"1AgasAnxa5bxRGq36T8ly","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
+0:{"b":"Eb2dlyXiMxYa_6ecvy5G9","t":{"t":{"s":"","h":16,"c":"$Q1"}}}

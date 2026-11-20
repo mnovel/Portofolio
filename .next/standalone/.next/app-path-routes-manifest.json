@@ -8,6 +8,7 @@
   "/contact/page": "/contact",
   "/ctf-writeups/[slug]/page": "/ctf-writeups/[slug]",
   "/ctf-writeups/page": "/ctf-writeups",
+  "/favicon.ico/route": "/favicon.ico",
   "/icon.svg/route": "/icon.svg",
   "/manifest.webmanifest/route": "/manifest.webmanifest",
   "/page": "/",

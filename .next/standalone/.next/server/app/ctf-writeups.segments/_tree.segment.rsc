@@ -3,4 +3,4 @@
 :HL["/_next/static/media/356810c1c81c4d60-s.p.2qe5xx8d5sx8i.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"ctf-writeups","h":64,"c":"$Q2"}]]
-0:{"b":"1AgasAnxa5bxRGq36T8ly","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
+0:{"b":"Eb2dlyXiMxYa_6ecvy5G9","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
