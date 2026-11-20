@@ -1,24 +1,81 @@
 import { MetadataRoute } from 'next';
+import { PROFILE } from '@/data/portfolio';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Muhammad Novel - Penetration Tester & Security Analyst',
+    name: `${PROFILE.name} - Security Engineer, Penetration Tester & Security Analyst`,
     short_name: 'Novel Portfolio',
-    description: 'Hybrid Infrastructure & Security Engineer. Certified CND, ECIH, CCNA.',
+    description:
+      'Hybrid Infrastructure & Security Engineer. Certified CND, ECIH, CCNA. Expert in Cyber Security, Cloud Computing, Incident Response, and Infrastructure Security.',
     start_url: '/',
+    scope: '/',
+    id: `${PROFILE.url}/`,
     display: 'standalone',
     background_color: '#0a0e17',
     theme_color: '#0a0e17',
+    orientation: 'portrait-primary',
+    lang: 'id-ID',
+    categories: ['portfolio', 'technology', 'security', 'business'],
     icons: [
       {
-        src: 'https://avatars.githubusercontent.com/u/66077593?s=192&v=4',
-        sizes: '192x192',
-        type: 'image/png',
+        src: '/icon.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
+        purpose: 'any',
       },
       {
-        src: 'https://avatars.githubusercontent.com/u/66077593?s=512&v=4',
+        src: '/icon-192.png',
+        sizes: '192x192',
+        type: 'image/png',
+        purpose: 'maskable',
+      },
+      {
+        src: '/icon-512.png',
         sizes: '512x512',
         type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/favicon.ico',
+        sizes: 'any',
+        type: 'image/x-icon',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'About & Experience',
+        short_name: 'About',
+        description: 'View work experience, core competencies, and education history',
+        url: '/about',
+        icons: [{ src: '/icon.svg', sizes: 'any' }],
+      },
+      {
+        name: 'Certifications',
+        short_name: 'Certs',
+        description: 'View professional certifications and training gallery',
+        url: '/certifications',
+        icons: [{ src: '/icon.svg', sizes: 'any' }],
+      },
+      {
+        name: 'Security Blog & Writeups',
+        short_name: 'Blog',
+        description: 'Read technical security guides and CTF writeups',
+        url: '/blog',
+        icons: [{ src: '/icon.svg', sizes: 'any' }],
+      },
+      {
+        name: 'Cheat Sheets & Resources',
+        short_name: 'Resources',
+        description: 'Quick CLI cheat sheets for Pentest, IR, Linux & Docker',
+        url: '/resources',
+        icons: [{ src: '/icon.svg', sizes: 'any' }],
+      },
+      {
+        name: 'Contact',
+        short_name: 'Contact',
+        description: 'Get in touch via Email, WhatsApp, or LinkedIn',
+        url: '/contact',
+        icons: [{ src: '/icon.svg', sizes: 'any' }],
       },
     ],
   };

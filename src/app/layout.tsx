@@ -45,6 +45,15 @@ export const metadata: Metadata = {
     "CCNA",
   ],
   authors: [{ name: PROFILE.name, url: PROFILE.url }],
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   verification: {
     other: {
       "msvalidate.01": "9F2D1B173DE3F858A241380D0774BE85",
@@ -74,7 +83,6 @@ export const metadata: Metadata = {
       "Certified Penetration Tester, Security Analyst & Incident Handler (CND, ECIH). Security Engineer di RSUD dr. R. Soedarsono.",
     images: [PROFILE.avatar],
   },
-  manifest: "/site.webmanifest",
   alternates: {
     canonical: "https://novelwardah.com",
   },
