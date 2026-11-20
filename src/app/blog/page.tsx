@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Security Blog",
   description:
     "Artikel teknis seputar Cyber Security, Hardening Linux, SOC, dan Cloud Infrastructure.",
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 export default function BlogPage() {
@@ -15,7 +18,7 @@ export default function BlogPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-14">
-      <SectionTitle title="SECURITY BLOG" />
+      <SectionTitle title="SECURITY BLOG" as="h1" />
       <p className="mb-10 max-w-2xl text-sm text-cyber-muted sm:text-base">
         Catatan teknis seputar keamanan infrastruktur, blue team defense,
         hardening server, dan pengalaman operasional keamanan siber.

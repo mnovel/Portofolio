@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: `%s | ${PROFILE.name}`,
   },
   description:
-    "Muhammad Novel - Certified Penetration Tester, Security Analyst & Incident Handler (CND, ECIH). Berpengalaman di Cyber Security, Cloud Computing, dan Infrastructure Security. Security Engineer di RSUD dr. R. Soedarsono.",
+    "Muhammad Novel - Certified Penetration Tester, Security Analyst & Incident Handler (CND, ECIH). Berpengalaman di Cyber Security, Cloud Computing, dan Infrastructure Security. Security Engineer di RSUD dr. R. Soedarsono Kota Pasuruan.",
   keywords: [
     "Muhammad Novel",
     "Penetration Tester",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     "Incident Handler",
     "Cyber Security",
     "Security Engineer",
-    "RSUD dr. R. Soedarsono",
+    "RSUD dr. R. Soedarsono Kota Pasuruan",
     "Cloud Computing",
     "Infrastructure Security",
     "CND",
@@ -62,14 +62,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${PROFILE.name} - ${PROFILE.title}`,
     description:
-      "Certified Penetration Tester, Security Analyst & Incident Handler (CND, ECIH). Security Engineer di RSUD dr. R. Soedarsono.",
+      "Certified Penetration Tester, Security Analyst & Incident Handler (CND, ECIH). Security Engineer di RSUD dr. R. Soedarsono Kota Pasuruan.",
     url: PROFILE.url,
     siteName: `${PROFILE.name} Portfolio`,
     images: [
       {
-        url: PROFILE.avatar,
-        width: 400,
-        height: 400,
+        url: `${PROFILE.url}/icon-512.png`,
+        width: 512,
+        height: 512,
+        alt: `${PROFILE.name} - ${PROFILE.title}`,
       },
     ],
     locale: "id_ID",
@@ -80,11 +81,8 @@ export const metadata: Metadata = {
     site: "@muhnovel_",
     title: `${PROFILE.name} - ${PROFILE.title}`,
     description:
-      "Certified Penetration Tester, Security Analyst & Incident Handler (CND, ECIH). Security Engineer di RSUD dr. R. Soedarsono.",
-    images: [PROFILE.avatar],
-  },
-  alternates: {
-    canonical: "https://novelwardah.com",
+      "Certified Penetration Tester, Security Analyst & Incident Handler (CND, ECIH). Security Engineer di RSUD dr. R. Soedarsono Kota Pasuruan.",
+    images: [`${PROFILE.url}/icon-512.png`],
   },
 };
 
@@ -97,18 +95,18 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     name: `${PROFILE.name} - ${PROFILE.title}`,
-    url: `${PROFILE.url}/`,
+    url: PROFILE.url,
     mainEntity: {
       "@type": "Person",
-      "@id": `${PROFILE.url}/#person`,
+      "@id": `${PROFILE.url}#person`,
       name: PROFILE.name,
       jobTitle: PROFILE.title,
       worksFor: {
         "@type": "Organization",
         name: PROFILE.company,
       },
-      url: `${PROFILE.url}/`,
-      image: PROFILE.avatar,
+      url: PROFILE.url,
+      image: `${PROFILE.url}/icon-512.png`,
       email: PROFILE.email,
       telephone: "+6282143000116",
       sameAs: PROFILE.socials

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Shield,
@@ -23,6 +24,12 @@ import {
   ORGANIZATION,
   CERTIFICATES,
 } from "@/data/portfolio";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function HomePage() {
   // Tampilkan 6 sertifikat profesional di Home, sisanya di /certifications

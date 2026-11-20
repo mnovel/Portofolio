@@ -3,13 +3,13 @@ import { PROFILE } from '@/data/portfolio';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${PROFILE.name} - Security Engineer, Penetration Tester & Security Analyst`,
+    name: `${PROFILE.name} - ${PROFILE.title}`,
     short_name: 'Novel Portfolio',
     description:
       'Hybrid Infrastructure & Security Engineer. Certified CND, ECIH, CCNA. Expert in Cyber Security, Cloud Computing, Incident Response, and Infrastructure Security.',
     start_url: '/',
     scope: '/',
-    id: `${PROFILE.url}/`,
+    id: PROFILE.url,
     display: 'standalone',
     background_color: '#0a0e17',
     theme_color: '#0a0e17',

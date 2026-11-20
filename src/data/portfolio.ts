@@ -3,9 +3,9 @@ import { ExperienceItem, SkillMetric, CertificateItem } from '@/types';
 export const PROFILE = {
   name: 'Muhammad Novel',
   shortName: 'Novel',
-  title: 'Penetration Tester & Security Analyst',
+  title: 'Security Engineer, Penetration Tester & Security Analyst',
   tagline: '// INFRASTRUCTURE & SECURITY · HYBRID ENGINEER',
-  company: 'RSUD dr. R. Soedarsono',
+  company: 'RSUD dr. R. Soedarsono Kota Pasuruan',
   location: 'Malang / Pasuruan, East Java, Indonesia',
   email: 'mnovel78@gmail.com',
   whatsapp: '+62 821-4300-0116',
@@ -40,7 +40,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     id: 'rsud',
     role: 'Security Engineer',
     subtitle: '(Infrastructure & Security)',
-    organization: 'RSUD dr. R. Soedarsono',
+    organization: 'RSUD dr. R. Soedarsono Kota Pasuruan',
     period: 'Feb 2025 - Present',
     borderColor: 'green',
     groups: [
@@ -85,7 +85,7 @@ export const EDUCATION: ExperienceItem[] = [
   {
     id: 'umm',
     role: 'S1 Teknik Informatika',
-    subtitle: 'Fokus pada Cyber Security & Cloud Computing',
+    subtitle: 'Lulusan · Spesialisasi Cyber Security & Cloud Computing',
     organization: 'Universitas Muhammadiyah Malang',
     period: '2021 - 2026',
     borderColor: 'cyan',

@@ -1,11 +1,57 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/mdx";
+import { PROFILE } from "@/data/portfolio";
 
 export async function generateStaticParams() {
   return getAllPosts("blog").map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug("blog", slug);
+  if (!post) return { title: "Artikel Tidak Ditemukan" };
+
+  const url = `${PROFILE.url}/blog/${slug}`;
+
+  return {
+    title: post.meta.title,
+    description: post.meta.summary,
+    keywords: post.meta.tags,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      type: "article",
+      title: post.meta.title,
+      description: post.meta.summary,
+      url,
+      publishedTime: post.meta.date,
+      authors: [PROFILE.name],
+      tags: post.meta.tags,
+      images: [
+        {
+          url: `${PROFILE.url}/icon-512.png`,
+          width: 512,
+          height: 512,
+          alt: post.meta.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.meta.title,
+      description: post.meta.summary,
+      images: [`${PROFILE.url}/icon-512.png`],
+    },
+  };
 }
 
 export default async function BlogDetailPage({
@@ -18,8 +64,36 @@ export default async function BlogDetailPage({
 
   if (!post) notFound();
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: post.meta.title,
+    description: post.meta.summary,
+    datePublished: post.meta.date,
+    dateModified: post.meta.date,
+    author: {
+      "@type": "Person",
+      name: PROFILE.name,
+      url: PROFILE.url,
+    },
+    publisher: {
+      "@type": "Person",
+      name: PROFILE.name,
+      url: PROFILE.url,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${PROFILE.url}/blog/${slug}`,
+    },
+    keywords: post.meta.tags.join(", "),
+  };
+
   return (
     <article className="mx-auto max-w-3xl px-6 py-14">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <Link
         href="/blog"
         className="mb-8 inline-flex items-center gap-2 font-mono text-xs text-cyber-cyan hover:underline"

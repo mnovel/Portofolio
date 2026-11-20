@@ -1,10 +1,10 @@
-# Muhammad Novel - Penetration Tester & Security Analyst
+# Muhammad Novel - Security Engineer, Penetration Tester & Security Analyst
 
 > Security Engineer, Penetration Tester & Security Analyst. Berpengalaman di Cyber Security, Cloud Computing, dan Incident Response. Menggabungkan keahlian Infrastructure & Security.
 
 ## Profile & Background
-- [Home](https://novelwardah.com/): Executive overview, core domains, featured case studies, and quick contact channels.
-- [About Me](https://novelwardah.com/about): Educational background, core competency pillars, work experience (RSUD dr. R. Soedarsono, CSIRT UMM), and organizational leadership (LSO Kaliber).
+- [Home](https://novelwardah.com): Executive overview, core domains, featured case studies, and quick contact channels.
+- [About Me](https://novelwardah.com/about): Educational background, core competency pillars, work experience (RSUD dr. R. Soedarsono Kota Pasuruan, CSIRT UMM), and organizational leadership (LSO Kaliber).
 - [Projects & Case Studies](https://novelwardah.com/projects): Real-world implementations in healthcare IT infrastructure (SIMRS), SIEM/IDS deployment, and web application security.
 - [Certifications](https://novelwardah.com/certifications): Interactive gallery of professional and training certifications from EC-Council (CND, ECIH), Cisco (CCNA, CyberOps), Oracle Academy, Google Cloud, and Dicoding.
 

@@ -3,6 +3,7 @@ import { getAllPosts } from '@/lib/mdx';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://novelwardah.com';
+  const buildDate = new Date('2026-11-20T00:00:00.000Z');
 
   const staticRoutes = [
     '',
@@ -15,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/contact',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date(),
+    lastModified: buildDate,
     changeFrequency: 'monthly' as const,
     priority: route === '' ? 1.0 : 0.8,
   }));

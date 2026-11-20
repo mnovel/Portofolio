@@ -1,10 +1,10 @@
-# Muhammad Novel - Penetration Tester & Security Analyst
+# Muhammad Novel - Security Engineer, Penetration Tester & Security Analyst
 
 > Official portfolio, technical knowledge base, security blog, CTF writeups, and cheat sheets of Muhammad Novel — Security Engineer, Penetration Tester, and Infrastructure Engineer.
 
 **Location:** Malang / Pasuruan, East Java, Indonesia  
 **Status:** Available for Collaboration & Professional Discussions  
-**Website:** https://novelwardah.com/  
+**Website:** https://novelwardah.com  
 **Sitemap:** https://novelwardah.com/sitemap.xml  
 **Full Context:** https://novelwardah.com/llms-full.txt  
 

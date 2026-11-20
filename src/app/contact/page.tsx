@@ -8,12 +8,15 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Hubungi Muhammad Novel untuk diskusi keamanan siber, infrastruktur, atau kolaborasi.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-14 text-center">
-      <SectionTitle title="CONTACT" />
+      <SectionTitle title="CONTACT" as="h1" />
       <p className="mx-auto mb-6 max-w-xl text-sm text-cyber-muted sm:text-base">
         Siap berkolaborasi atau berdiskusi seputar keamanan siber, cloud
         computing, dan incident response. Jangan ragu untuk menghubungi saya

@@ -7,12 +7,15 @@ export const metadata: Metadata = {
   title: "Certifications & Credentials",
   description:
     "Daftar sertifikasi profesional dan pelatihan keamanan siber Muhammad Novel (CND, ECIH, CCNA, CyberOps).",
+  alternates: {
+    canonical: "/certifications",
+  },
 };
 
 export default function CertificationsPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-14">
-      <SectionTitle title="CERTIFICATIONS GALLERY" />
+      <SectionTitle title="CERTIFICATIONS GALLERY" as="h1" />
       <p className="mb-8 max-w-2xl text-sm text-cyber-muted sm:text-base">
         Koleksi sertifikasi profesional terakreditasi (EC-Council, Cisco,
         Oracle) serta sertifikat kelulusan pelatihan intensif di bidang Cyber

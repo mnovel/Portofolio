@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "CTF Writeups",
   description:
     "Dokumentasi penyelesaian tantangan Capture The Flag (Web Exploitation, Forensics, Network).",
+  alternates: {
+    canonical: "/ctf-writeups",
+  },
 };
 
 export default function CtfWriteupsPage() {
@@ -15,7 +18,7 @@ export default function CtfWriteupsPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-14">
-      <SectionTitle title="CTF WRITEUPS" />
+      <SectionTitle title="CTF WRITEUPS" as="h1" />
       <p className="mb-10 max-w-2xl text-sm text-cyber-muted sm:text-base">
         Dokumentasi metodologi enumerasi, eksploitasi, hingga privilege
         escalation dari berbagai platform CTF.

@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Cheat Sheets & Resources",
   description:
     "Kumpulan cheat sheet, playbook incident response, dan referensi perintah teknis Cyber Security & Infrastructure.",
+  alternates: {
+    canonical: "/resources",
+  },
 };
 
 export default function ResourcesPage() {
@@ -14,7 +17,7 @@ export default function ResourcesPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-14">
-      <SectionTitle title="CHEAT SHEETS & RESOURCES" />
+      <SectionTitle title="CHEAT SHEETS & RESOURCES" as="h1" />
       <p className="mb-8 max-w-2xl text-sm text-cyber-muted sm:text-base">
         Dokumentasi referensi cepat, *command cheat sheets*, dan *playbook*
         teknis yang disusun dari folder <code>content/resources/</code> untuk

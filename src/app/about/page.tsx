@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   title: "About Me",
   description:
     "Latar belakang pendidikan, pengalaman karier, dan fokus keahlian Muhammad Novel di bidang Cyber Security & Infrastructure Engineering.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const PILLARS = [
@@ -59,7 +62,7 @@ const PILLARS = [
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-14">
-      <SectionTitle title="ABOUT ME" />
+      <SectionTitle title="ABOUT ME" as="h1" />
 
       {/* ===== 1. TERMINAL DOSSIER & QUICK STATS ===== */}
       <div className="mb-14 overflow-hidden rounded-2xl border border-cyber-cyan/25 bg-cyber-card/80 shadow-[0_0_40px_rgba(0,240,255,0.06)]">

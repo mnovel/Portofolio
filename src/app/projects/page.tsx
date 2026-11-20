@@ -7,12 +7,15 @@ export const metadata: Metadata = {
   title: "Projects & Case Studies",
   description:
     "Studi kasus implementasi keamanan infrastruktur, SOC, penelitian deteksi DDoS, dan pengembangan sistem.",
+  alternates: {
+    canonical: "/projects",
+  },
 };
 
 export default function ProjectsPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-14">
-      <SectionTitle title="PROJECTS & CASE STUDIES" />
+      <SectionTitle title="PROJECTS & CASE STUDIES" as="h1" />
       <p className="mb-10 max-w-2xl text-sm text-cyber-muted sm:text-base">
         Implementasi teknis di bidang keamanan infrastruktur, Security
         Operations Center (SOC), riset keamanan jaringan, dan pengembangan

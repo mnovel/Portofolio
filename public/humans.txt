@@ -4,7 +4,7 @@
 
 /* TEAM */
     Name: Muhammad Novel
-    Title: Penetration Tester & Security Analyst
+    Title: Security Engineer, Penetration Tester & Security Analyst
     Role: Security Engineer at RSUD dr. R. Soedarsono Kota Pasuruan
     Location: Malang / Pasuruan, East Java, Indonesia
 
@@ -26,11 +26,11 @@
 
 /* SITE */
     Standard: HTML5, CSS3, TypeScript, MDX
-    Framework: Next.js 15 (App Router) & Tailwind CSS v4
+    Framework: Next.js 16 (App Router) & Tailwind CSS v4
     Features: Interactive Certificate Gallery (PDF/Image Modal), Security Blog, CTF Writeups, Cheat Sheets & Resources, AI/LLM Discovery (llms.txt)
     Hosting: Cloudflare Tunnel
     Sitemap: https://novelwardah.com/sitemap.xml
-    Last Update: 2026-11-18
+    Last Update: 2026-11-20
 
 /* THANKS */
     Thank you for visiting my portfolio!
